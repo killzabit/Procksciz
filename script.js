@@ -1,6 +1,6 @@
 
-     let pChoice = '';
-     let cChoice = ''; 
+     let pChoice;
+     let cChoice; 
     function computerPlay() {
         let compChoice = ['rock', 'paper', 'scissors'];
         cChoice = compChoice[Math.floor(Math.random() * compChoice.length)];
@@ -18,39 +18,43 @@
 
     }
 
+    let playerScore = 0;
+    let compScore = 0;
+
     function playRound () {
-        playerScore = 0
-        compScore = 0
+        computerPlay();
+        playerChoice();
+        let result;
         if (pChoice == 'rock') {
             switch (cChoice) {
                 case 'rock':
-                    let result = "Tie!";
+                    result = "Tie!";
                     break;
                 case 'paper':
-                    let result = "You lose!";
+                    result = "You lose!";
                     break;
                 default:
-                    let result = "You win!"};
-            } else if (pChoice == 'paper') {
-                switch (cChoice) {
-                    case 'rock':
-                        let result = "You win!!";
-                        break;
-                    case 'paper':
-                        let result = "Tie!";
-                        break;
-                    default:
-                        let result = "You lose!"};
-            } else if (pChoice == 'scissors') {
-                switch (cChoice) {
-                    case 'rock':
-                        let result = "You lose!";
-                        break;
-                    case 'paper':
-                         let result = "You win!";
-                        break;
-                    default:
-                        let result = "Tie"};
+                    result = "You win!"};
+        } else if (pChoice == 'paper') {
+            switch (cChoice) {
+                case 'rock':
+                    result = "You win!";
+                    break;
+                case 'paper':
+                    result = "Tie!";
+                    break;
+                default:
+                    result = "You lose!"};
+        } else if (pChoice == 'scissors') {
+            switch (cChoice) {
+                case 'rock':
+                    result = "You lose!";
+                    break;
+                case 'paper':
+                    result = "You win!";
+                    break;
+                default:
+                    result = "Tie!"};
         }
         if (result == 'You win!') {
             playerScore++
@@ -63,10 +67,30 @@
             compScore++
             alert('You tied!')
         }
-            
-        
-            
-        
+        document.getElementById('pScoreBox').innerHTML = (playerScore);
+        document.getElementById('cScoreBox').innerHTML = (compScore);     
+     
     }
-    document.getElementById('Choose').addEventListener('click', playerChoice);
-    document.getElementById('Play').addEventListener('click', playRound);
+
+    let rounds = document.getElementById('rounds');
+    let amtRound = rounds.options[rounds.selectedIndex].value;
+
+    choiceRounds = document.querySelector('select');
+    choiceRounds.addEventListener("change", function () {
+         updateRound()
+    }); 
+
+    function updateRound () {
+        amtRound = rounds.options[rounds.selectedIndex].value;
+    }
+
+    
+    function playGame() {
+        i = 0;
+        while (i < amtRound) {
+            playRound();
+            i++;
+        }
+    }
+
+    document.getElementById('Play').addEventListener('click', playGame);

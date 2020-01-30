@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Play a game!</title>
 </head>
 <body>
@@ -12,8 +13,24 @@
 
 Players Choice: <input type="text" id="pChoice">
 
-<button id='Choose'>Choose</button>
+<p id='roundsText'>How many rounds would you like to play?</p>
+
+<select id='rounds'>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+</select>
+
 <button id='Play'>Play</button>
+
+<p id='pScoreText'>Player Score</p>
+<div class='pScoreBox' id='pScoreBox'>0</div>
+
+<p id='cScoreText'>Computer Score</p>
+<div class='cScoreBox' id='cScoreBox'>0</div>
+
 <script src='./script.js'></script>
 </body>
 </html>
