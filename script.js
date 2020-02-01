@@ -84,12 +84,22 @@
         amtRound = rounds.options[rounds.selectedIndex].value;
     }
 
+    function newChoice() {
+            neewChoice = prompt('Choose rock, paper, or scissors: ').toLowerCase();
+            document.getElementById('pChoice').value = neewChoice;
+        
+    }
     
     function playGame() {
-        i = 0;
+        i = 1;
         while (i < amtRound) {
             playRound();
+            if (i > 0) {
+                newChoice();   
+            }
+            console.log(pChoice);
             i++;
+            console.log(i);
         }
     }
 
