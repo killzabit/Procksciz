@@ -8,10 +8,12 @@
     <title>Play a game!</title>
 </head>
 <body>
-    <h1>Paper! Rock! Scissors!</h1>
-<p>Choose paper, rock, or scissors </p>
+    <h1 id='title'>Paper! Rock! Scissors!</h1>
+<p id='choice'>Choose paper, rock, or scissors </p>
 
-Players Choice: <input type="text" id="pChoice">
+<div id='pcBox'> Players Choice: <input type="text" id="pChoice"> </div>
+<div id='cBox'>Computers choice:</div>
+<p id='cChoice'>cChoice display here!</p>
 
 <p id='roundsText'>How many rounds would you like to play?</p>
 
@@ -26,10 +28,12 @@ Players Choice: <input type="text" id="pChoice">
 <button id='Play'>Play</button>
 
 <p id='pScoreText'>Player Score</p>
-<div class='pScoreBox' id='pScoreBox'>0</div>
+<div class='scoreBox' id='pScoreBox'>0</div>
 
 <p id='cScoreText'>Computer Score</p>
-<div class='cScoreBox' id='cScoreBox'>0</div>
+<div class='scoreBox' id='cScoreBox'>0</div>
+
+<p id='resultMessage'>Result display here!</p>
 
 <script src='./script.js'></script>
 </body>

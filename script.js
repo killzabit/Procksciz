@@ -1,11 +1,15 @@
 
-     let pChoice;
-     let cChoice; 
+    let pChoice;
+    let cChoice = ''; 
     function computerPlay() {
         let compChoice = ['rock', 'paper', 'scissors'];
         cChoice = compChoice[Math.floor(Math.random() * compChoice.length)];
         console.log(cChoice);
+        document.getElementById('cChoice').innerHTML = (cChoice);
+
     }
+
+
 
     function playerChoice() {
          pChoice = document.getElementById('pChoice').value;
@@ -14,8 +18,6 @@
             alert('Please choose paper or rock or scissors!')
         
         }
-        console.log(pChoice);
-
     }
 
     let playerScore = 0;
@@ -33,7 +35,7 @@
                 case 'paper':
                     result = "You lose!";
                     break;
-                default:
+                case 'scissors':
                     result = "You win!"};
         } else if (pChoice == 'paper') {
             switch (cChoice) {
@@ -43,7 +45,7 @@
                 case 'paper':
                     result = "Tie!";
                     break;
-                default:
+                case 'scissors':
                     result = "You lose!"};
         } else if (pChoice == 'scissors') {
             switch (cChoice) {
@@ -53,19 +55,17 @@
                 case 'paper':
                     result = "You win!";
                     break;
-                default:
+                case 'scissors':
                     result = "Tie!"};
         }
         if (result == 'You win!') {
             playerScore++
-            alert('You won!')
+            document.getElementById('resultMessage').innerHTML = 'You win!';
         } else if (result == 'You lose!') {
             compScore++
-            alert('The computer won!')
+            document.getElementById('resultMessage').innerHTML = 'You lose!';
         }else if (result == 'Tie!') {
-            playerScore++
-            compScore++
-            alert('You tied!')
+            document.getElementById('resultMessage').innerHTML = 'You tie!';
         }
         document.getElementById('pScoreBox').innerHTML = (playerScore);
         document.getElementById('cScoreBox').innerHTML = (compScore);     
@@ -87,17 +87,20 @@
     function newChoice() {
             neewChoice = prompt('Choose rock, paper, or scissors: ').toLowerCase();
             document.getElementById('pChoice').value = neewChoice;
-        
+            if (neewChoice === null) {
+                return;
+            }
+
     }
     
     function playGame() {
-        i = 1;
+        i = 0;
         while (i < amtRound) {
             playRound();
-            if (i > 0) {
+            if ((i != amtRound) && (i >= 1)) {
                 newChoice();   
             }
-            console.log(pChoice);
+
             i++;
             console.log(i);
         }
